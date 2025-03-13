@@ -24,4 +24,25 @@ The firewall should be disabled
 **sudo systemctl stop firewalld**
 
 
+## Hosts file can be of two types - ini and yaml
+#To create inventory in other that hosts file
+**mkdir inv**
+**cd inv/**
+ 1. inv-ini.yaml
+ write Ip in yaml file
+
+Ip1
+
+[webservers]
+51.21.128.242
+13.61.184.10
+
+[dbserver]
+51.21.150.34
+**ansible all -i xyz.yaml -m ping**
+**ansible webservers -i xyz.yaml -m ping**
+
+-i to tell that we are replacing default yaml file
+
+2. inv-yaml.yaml
 
