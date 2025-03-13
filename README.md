@@ -14,3 +14,14 @@ copy the IP/fqdn of client servers to inventory file
 
 **ansible all -m ping**  if problem comes check manually ssh@IP
 
+In Client Servers, ssh should be installed, and the service should be started.
+**sudo yum install openssh**
+**sudo systemctl status sshd**
+**sudo systemctl start sshd**
+
+The firewall should be disabled
+**sudo systemctl status firewalld**
+**sudo systemctl stop firewalld**
+
+
+
