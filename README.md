@@ -5,3 +5,12 @@ In Host Server, cd .ssh, generate key ""ssh-keygen -t ed25519""  copy key from i
 In Host Server, to connect to Clients, """ssh ec2-user@Public IPv4 DNS"".
 
 Note: In Linux VM, python is already installed. For Windows VM, python has to be installed.
+
+In Host Server, install ansible ""sudo yum install ansible""
+ansible --version
+copy the IP/fqdn of client servers to inventory file
+cd /etc/ansible
+sudo vim host -> Paste Ip of clients here and save by wq!
+
+**ansible all -m ping**  if problem comes check manually ssh@IP
+
