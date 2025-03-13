@@ -32,9 +32,10 @@ The firewall should be disabled
  write Ip in yaml file
 
 **ansible all -i xyz.yaml -m ping**
-**ansible webservers -i xyz.yaml -m ping**
+**ansible webservers -i xyz.yaml -m ping -vvv**
 
 -i to tell that we are replacing the default yaml file
+-vvv for detailed debugging
 
 2. inv-yaml.yaml -> inventory-yaml.yaml
    Note: ":" at the end of each line
