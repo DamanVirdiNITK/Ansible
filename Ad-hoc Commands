@@ -1,0 +1,62 @@
+# Ansible Ad-Hoc Commands Cheat Sheet
+
+# 1. Ping all hosts
+ansible all -i inventory.yaml -m ping
+
+# 2. Check disk space on all servers
+ansible all -i inventory.yaml -m shell -a "df -h"
+
+# 3. Create a directory
+ansible all -i inventory.yaml -m file -a "path=/tmp/mydir state=directory mode=0755"
+
+# 4. Create an empty file
+ansible all -i inventory.yaml -m file -a "path=/tmp/myfile.txt state=touch mode=0644"
+
+# 5. Delete a file
+ansible all -i inventory.yaml -m file -a "path=/tmp/myfile.txt state=absent"
+
+# 6. Create a new user
+ansible all -i inventory.yaml -m user -a "name=ansibleuser password={{ 'mypassword' | password_hash('sha512') }} state=present"
+
+# 7. Change file permissions
+ansible all -i inventory.yaml -m file -a "path=/tmp/myfile.txt mode=0644"
+
+# 8. Install Apache
+ansible all -i inventory.yaml -m apt -a "name=apache2 state=present"  # Debian/Ubuntu
+ansible all -i inventory.yaml -m yum -a "name=httpd state=present"   # RHEL/CentOS
+
+# 9. Remove a package
+ansible all -i inventory.yaml -m yum -a "name=nginx state=absent"
+
+# 10. Update all packages
+ansible all -i inventory.yaml -m yum -a "name=* state=latest"
+
+# 11. Start Apache
+ansible all -i inventory.yaml -m service -a "name=httpd state=started"
+
+# 12. Restart a service
+ansible all -i inventory.yaml -m service -a "name=nginx state=restarted"
+
+# 13. Stop a service
+ansible all -i inventory.yaml -m service -a "name=apache2 state=stopped"
+
+# 14. Check running processes
+ansible all -i inventory.yaml -m shell -a "ps aux | grep httpd"
+
+# 15. Get system uptime
+ansible all -i inventory.yaml -m command -a "uptime"
+
+# 16. Check free memory
+ansible all -i inventory.yaml -m shell -a "free -m"
+
+# 17. Copy a file to remote servers
+ansible all -i inventory.yaml -m copy -a "src=/home/user/localfile.txt dest=/tmp/remote_file.txt mode=0644"
+
+# 18. Download a file from a remote server
+ansible all -i inventory.yaml -m fetch -a "src=/etc/passwd dest=/tmp/"
+
+# 19. Run a command remotely
+ansible all -i inventory.yaml -m command -a "whoami"
+
+# 20. Reboot all servers
+ansible all -i inventory.yaml -m reboot
