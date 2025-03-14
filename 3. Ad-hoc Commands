@@ -1,5 +1,5 @@
 # Ansible Ad-Hoc Commands Cheat Sheet
-
+** ansible [host/host gp] -i inv.yaml -m [module] -a "[modeule options]"
 # 1. Ping all hosts
 ansible all -i inventory.yaml -m ping
 
