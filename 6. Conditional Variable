@@ -1,0 +1,23 @@
+---
+- name: Demo Registers
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Capture details
+      shell: uname
+      register: os_name
+
+    - name: Print details
+      debug:
+        msg: "Details {{ os_name.stdout }}"
+
+    - name: install nginx
+      yum:
+        name: nginx
+        state: present
+      **when: os_name.stdout == 'Linux'**
+    - name: install nginx
+      yum:
+        name: nginx
+        state: present
+      when: os_name.stdout == 'Linux1'
