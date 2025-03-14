@@ -1,11 +1,25 @@
+Defining variable     
+abc : 123
+Refrencing varibale   "{{abc}}"
+
 ---
 - name: Print Variable
   hosts: webserver
   vars:
-   region : abc
+   varInt : abc
+   varList :
+     - a
+     - b
+     - c
+   varList2: ['a1','b1','c1']
+   varDict:
+     arg1: yes
+     arg2: varList
+
   tasks:
    - name: Print Variable
      debug:
-       msg : "The region is {{region}}"
-
+       msg : "The varInt is {{varInt}} and varList is {{varList}} and {{varList2}} \n Second element of list is {{varList[1]}}\n
+              Dictionary is {{varDict}} and value of arg1 is varDict['arg1'] and  arg2 is {{varDict['arg2']}}"
+              
 ansible-playbook -i inv/inventory-yaml.yaml printVariable.yaml
