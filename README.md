@@ -40,3 +40,6 @@ The firewall should be disabled
 2. inv-yaml.yaml -> inventory-yaml.yaml
    Note: ":" at the end of each line
 
+**Syntax Check**
+   ansible-playbook -i inv/inventory-yaml.yaml --syntax-check handlers.yaml 
+
