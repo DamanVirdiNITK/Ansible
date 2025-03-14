@@ -1,4 +1,4 @@
-Handlers are tasks that executes only 
+Handlers are tasks that execute only if it is notified 
 
 ---
 - hosts: webserver
@@ -17,3 +17,11 @@ Handlers are tasks that executes only
       debug:
         msg: "OS name is {{ os_name.stdout }}"
 
+
+
+**Flush handlers**
+
+By default, handlers always execute after all plays, But with this, it executes with each task
+    - name: flush handlers
+      meta: flush_handlers
+  
