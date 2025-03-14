@@ -1,0 +1,12 @@
+---
+- name: Demo Registers
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Capture details
+      shell: uname
+      register: os_name
+
+    - name: Print details
+      debug:
+        msg: "Details {{ os_name.stdout }}"
