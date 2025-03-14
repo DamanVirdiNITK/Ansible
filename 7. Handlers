@@ -1,1 +1,19 @@
 Handlers are tasks that executes only 
+
+---
+- hosts: webserver
+  name: Handler Demo
+  tasks:
+    - name: fetch os name
+      shell: uname
+      register: os_name
+      notify: os name
+
+    - name: ping servers
+      ping:
+
+  handlers:
+    - name: os name
+      debug:
+        msg: "OS name is {{ os_name.stdout }}"
+
