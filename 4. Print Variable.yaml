@@ -1,0 +1,11 @@
+---
+- name: Print Variable
+  hosts: webserver
+  vars:
+   region : abc
+  tasks:
+   - name: Print Variable
+     debug:
+       msg : "The region is {{region}}"
+
+ansible-playbook -i inv/inventory-yaml.yaml printVariable.yaml
